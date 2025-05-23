@@ -1,23 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
+  <!-- Head er kun for nettleser informasjon -->
   <head>
-    <title>Home</title>
+    <title>Hjem</title>
+    <link rel="icon" type="image/x-icon" href="html.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="script.js"></script>
   </head>
+
+  <!-- Body er kun for det som skal synes på selve nettsiden -->
   <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
+    <header>
+  
+        <!-- Burger ikon for meny -->
+        <div class="burger-icon" id="burger-icon">
+          <div class="burger-bar"></div>
+          <div class="burger-bar"></div>
+          <div class="burger-bar"></div>
+        </div>
+        
+        <!-- Skjult navigasjon -->
+        <nav class="headerNav" id="headerNav">
+          <a href="" class="headerNavButton">Hjem</a>
+          <a href="page2.html" target="_blank" class="headerNavButton">Merch</a>
+          <a href="" class="headerNavButton">Prosjekter</a>
+          <a href="" class="headerNavButton">Gaming</a>
+          <a href="" class="headerNavButton">Pokemon</a>
+    </header>
+      
+    <main>  
+     <img class="heroImg" src="Burger.jpg" alt="Bilde av en matrett">
+      <section class="sectionHero">
+        <!-- Hero-section: Kort introduksjon til produktet. Booking knapp -->
+     
+        <div class="heroText">
+          <h1>Resturant</h1>
+          <p>Slagord for resturant</p>
+          <div class="heroButtons">
+            <button>Bestill bord</button>
+            <button>Bestill levering</button>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>
+      <h4>Laget av Therese</h4>
+    </footer>
   </body>
 </html>
