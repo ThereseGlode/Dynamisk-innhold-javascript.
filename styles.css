@@ -1,6 +1,5 @@
 /* 🌐 Globale variabler */
 :root {
-  /* 🎨 Farger */
   --primary-color: #1D7874;
   --secondary-color: #679289;
   --primary-hover-color: #145F58;
@@ -11,11 +10,9 @@
   --white: #ffffff;
   --border-color: #333;
 
-  /* 🖋️ Skrifttyper */
   --heading-font: 'Bebas Neue', sans-serif;
   --body-font: 'Roboto', sans-serif;
 
-  /* 📐 Vanlige egenskaper */
   --spacing: 20px;
   --default-padding: 16px;
   --default-border-radius: 8px;
@@ -24,7 +21,7 @@
   --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* 🧼 Reset og basis */
+/* Reset og basis */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,23 +33,18 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
 }
 
-
-/* 🔝 Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing) 5%;
   background-color: var(--primary-color);
-  margin-bottom: var(--spacing); /* 👈 Mellomrom under header */
+  margin-bottom: var(--spacing);
 }
 
-#logo,
-#logo2 {
+#logo, #logo2 {
   width: 70px;
   cursor: pointer;
 }
@@ -73,6 +65,10 @@ nav.headerNav {
   transition: background-color 0.3s ease;
 }
 
+.headerNavButton:hover {
+  background-color: var(--secondary-color);
+}
+
 .backButton {
   display: inline-block;
   background-color: var(--white);
@@ -90,18 +86,7 @@ nav.headerNav {
   background-color: var(--secondary-color);
 }
 
-.headerNavButton:hover {
-  background-color: var(--secondary-color);
-}
-
-/* 🍔 Burger-ikon for mobil */
-#burger-icon {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* 📄 Hovedinnhold */
+/* Hovedinnhold */
 main {
   background-color: var(--secondary-color);
   padding: var(--spacing) 5%;
@@ -136,7 +121,7 @@ main {
   margin-bottom: 30px;
 }
 
-/* 📦 Hero-knapper */
+/* Knapper */
 .heroButtons {
   display: flex;
   flex-direction: column;
@@ -158,14 +143,32 @@ main {
   background-color: var(--primary-hover-color);
 }
 
-/* 🍔 Burgermeny / produktkort */
+.heroButtonLink {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: var(--button-radius);
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.heroButtonLink:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* Kort / meny */
 #burgerCardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
   padding: var(--spacing);
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
+  justify-items: center;
 }
 
 .pizzaCard {
@@ -177,6 +180,9 @@ main {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .pizzaCard:hover {
@@ -221,17 +227,7 @@ main {
   margin: 0;
 }
 
-/* 🦶 Footer */
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--spacing);
-  background-color: var(--primary-color);
-  color: var(--white);
-  margin-top: 40px;
-}
-
+/* Scroll to top */
 #scrollToTopBtn {
   position: fixed;
   bottom: 40px;
@@ -246,51 +242,25 @@ footer {
   cursor: pointer;
   box-shadow: var(--card-shadow);
   transition: background-color 0.3s ease;
-  display: none; /* Skjules til brukeren scroller */
+  display: none;
 }
 
 #scrollToTopBtn:hover {
   background-color: var(--primary-hover-color);
 }
 
-/* Sentrerer tekst og innhold i menyseksjonen */
-.hero-menu {
+/* Footer */
+footer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
   padding: var(--spacing);
+  background-color: var(--primary-color);
+  color: var(--white);
+  margin-top: 40px;
 }
 
-/* 📱 Mobilvennlig layout */
-@media (max-width: 768px) {
-  .heroButtons {
-    flex-direction: column;
-  }
-
-  #burger-icon {
-    display: block;
-  }
-
-  .headerNav {
-    display: none;
-    flex-direction: column;
-    background-color: var(--primary-color);
-    position: absolute;
-    top: 60px;
-    right: 5%;
-    width: 150px;
-    padding: 10px;
-    border-radius: var(--default-border-radius);
-  }
-
-  .headerNav.show {
-    display: flex;
-  }
-}
-
-/*Booking page*/
-
+/* Bestilling / booking */
 .bookingSection {
   max-width: 600px;
   margin: 0 auto;
@@ -342,18 +312,52 @@ footer {
 .bookingForm button:hover {
   background-color: var(--primary-hover-color);
 }
-.heroButtonLink {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: var(--button-radius);
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease;
+
+
+
+@media (max-width: 480px) {
+  .heroText h1 {
+    font-size: 2rem;
+  }
+
+  .heroText p {
+    font-size: 1rem;
+  }
+
+  .heroButtons,
+  .bookingForm {
+    width: 100%;
+  }
+
+  .heroButtons button,
+  .heroButtonLink {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  #burgerCardContainer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .pizzaCard {
+    max-width: 320px;
+  }
+
+  .backButton {
+    width: 100%;
+    text-align: center;
+  }
+  .headerNav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  } 
+  .headerNavButton {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 
-.heroButtonLink:hover {
-  background-color: var(--primary-hover-color);
-}
