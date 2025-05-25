@@ -349,6 +349,21 @@ footer {
   background-color: var(--primary-hover-color);
 }
 
+.removeBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.removeBtn:hover {
+  background-color: darkred;
+}
 
 @media (max-width: 480px) {
   .heroText h1 {

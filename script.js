@@ -1,7 +1,7 @@
 console.log("Script lastet");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Logo-klikk: legg til/fjern gul bakgrunn
+  // === Logo: gul bakgrunn ved klikk ===
   const logo = document.getElementById("logo");
   const logo2 = document.getElementById("logo2");
 
@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === MENU-SIDEN ===
-  const burgerCardContainer = document.querySelector("#burgerCardContainer");
+  // === MENY-siden ===
+  const burgerCardContainer = document.getElementById("burgerCardContainer");
 
   if (burgerCardContainer) {
     const burgers = [
@@ -81,24 +81,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === ORDER-SIDEN ===
+  // === ORDER-siden ===
   const orderCardContainer = document.getElementById("orderCardContainer");
   const cartList = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
 
   if (orderCardContainer && cartList && cartTotal) {
+    // Last inn handlekurven fra localStorage
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     let total = 0;
 
-    cart.forEach(({ title, price }) => {
+    cart.forEach(({ title, price }, index) => {
       const li = document.createElement("li");
-      li.textContent = `${title} - ${price} kr`;
+      li.innerHTML = `
+        ${title} - ${price} kr
+        <button class="removeBtn" data-index="${index}">Fjern</button>
+      `;
       cartList.appendChild(li);
       total += parseInt(price);
     });
 
     cartTotal.textContent = `${total} kr`;
 
+    // Fjern-knapp logikk
+    cartList.addEventListener("click", (e) => {
+      if (e.target.classList.contains("removeBtn")) {
+        const indexToRemove = parseInt(e.target.dataset.index);
+        const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        updatedCart.splice(indexToRemove, 1);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        location.reload();
+      }
+    });
+
+    // Vis også noen ekstra burgere til bestilling
     const burgers = [
       {
         title: "Classic Burger",
@@ -136,8 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         cart.push({ title, price });
         localStorage.setItem("cart", JSON.stringify(cart));
+
         const li = document.createElement("li");
-        li.textContent = `${title} - ${price} kr`;
+        li.innerHTML = `
+          ${title} - ${price} kr
+          <button class="removeBtn" data-index="${cart.length - 1}">Fjern</button>
+        `;
         cartList.appendChild(li);
         total += price;
         cartTotal.textContent = `${total} kr`;
@@ -145,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === SCROLL TO TOP ===
+  // === Scroll to top-knapp ===
   const scrollBtn = document.getElementById("scrollToTopBtn");
 
   if (scrollBtn) {
