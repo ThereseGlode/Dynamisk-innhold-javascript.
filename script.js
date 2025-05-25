@@ -1,24 +1,19 @@
 console.log("Script lastet");
 
-// Vent til hele DOM-en er klar før noe kjøres
 document.addEventListener("DOMContentLoaded", () => {
   // Logo-klikk: legg til/fjern gul bakgrunn
   const logo = document.getElementById("logo");
   const logo2 = document.getElementById("logo2");
 
-  if (logo) {
-    logo.addEventListener("click", () => {
-      document.body.classList.toggle("yellow-background");
-    });
-  }
+  [logo, logo2].forEach(el => {
+    if (el) {
+      el.addEventListener("click", () => {
+        document.body.classList.toggle("yellow-background");
+      });
+    }
+  });
 
-  if (logo2) {
-    logo2.addEventListener("click", () => {
-      document.body.classList.toggle("yellow-background");
-    });
-  }
-
-  // Burgerkortene på meny-siden
+  // === MENU-SIDEN ===
   const burgerCardContainer = document.querySelector("#burgerCardContainer");
 
   if (burgerCardContainer) {
@@ -27,37 +22,37 @@ document.addEventListener("DOMContentLoaded", () => {
         imgSrc: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=300&q=80",
         title: "Classic Burger",
         description: "Saftig biff, salat, tomat, ost",
-        price: "129 kr"
+        price: "129"
       },
       {
         imgSrc: "./images/baconbbq.jpg",
         title: "BBQ Bacon",
         description: "Biff, bacon, ost, BBQ-saus",
-        price: "149 kr"
+        price: "149"
       },
       {
         imgSrc: "./images/veggieburger.jpg",
         title: "Veggie Burger",
         description: "Vegetarbiff, avokado, tomat",
-        price: "119 kr"
+        price: "119"
       },
       {
         imgSrc: "./images/trippelcheese.jpg",
         title: "Cheese Overload",
         description: "Trippel ost, biff, løk og salat",
-        price: "139 kr"
+        price: "139"
       },
       {
         imgSrc: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=300&q=80",
         title: "Spicy Jalapeño",
         description: "Biff, jalapeño, ost, chipotle-mayo",
-        price: "139 kr"
+        price: "139"
       },
       {
         imgSrc: "./images/dobblemeat.jpg",
         title: "Double Trouble",
         description: "Dobbel biff, ost, bacon, dressing",
-        price: "159 kr"
+        price: "159"
       }
     ];
 
@@ -70,29 +65,96 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="pizzaCardContent">
           <h3 class="pizzaCardTitle">${title}</h3>
           <p class="pizzaCardDescription">${description}</p>
-          <p class="pizzaCardPrice">${price}</p>
+          <p class="pizzaCardPrice">${price} kr</p>
+          <button class="addToCartBtn">Legg i handlekurv</button>
         </div>
       `;
 
       burgerCardContainer.appendChild(card);
+
+      card.querySelector(".addToCartBtn").addEventListener("click", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ title, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${title} lagt i handlekurven!`);
+      });
+    });
+  }
+
+  // === ORDER-SIDEN ===
+  const orderCardContainer = document.getElementById("orderCardContainer");
+  const cartList = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+
+  if (orderCardContainer && cartList && cartTotal) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+
+    cart.forEach(({ title, price }) => {
+      const li = document.createElement("li");
+      li.textContent = `${title} - ${price} kr`;
+      cartList.appendChild(li);
+      total += parseInt(price);
+    });
+
+    cartTotal.textContent = `${total} kr`;
+
+    const burgers = [
+      {
+        title: "Classic Burger",
+        price: 129,
+        imgSrc: "./images/classic.jpg"
+      },
+      {
+        title: "BBQ Bacon",
+        price: 149,
+        imgSrc: "./images/bbq.jpg"
+      },
+      {
+        title: "Veggie Burger",
+        price: 119,
+        imgSrc: "./images/veggie.jpg"
+      }
+    ];
+
+    burgers.forEach(({ title, price, imgSrc }) => {
+      const card = document.createElement("div");
+      card.classList.add("pizzaCard");
+
+      card.innerHTML = `
+        <img class="pizzaCardImg" src="${imgSrc}" alt="${title}">
+        <div class="pizzaCardContent">
+          <h3 class="pizzaCardTitle">${title}</h3>
+          <p class="pizzaCardPrice">${price} kr</p>
+          <button class="addToCartBtn">Legg i handlekurv</button>
+        </div>
+      `;
+
+      orderCardContainer.appendChild(card);
+
+      card.querySelector(".addToCartBtn").addEventListener("click", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ title, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        const li = document.createElement("li");
+        li.textContent = `${title} - ${price} kr`;
+        cartList.appendChild(li);
+        total += price;
+        cartTotal.textContent = `${total} kr`;
+      });
+    });
+  }
+
+  // === SCROLL TO TOP ===
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+
+  if (scrollBtn) {
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 });
-
-// Scroll to top-knapp
-const scrollBtn = document.getElementById("scrollToTopBtn");
-
-if (scrollBtn) {
-  // Vis knapp når man scroller ned
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-  });
-
-  // Scroll til toppen når man klikker
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-}
