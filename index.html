@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html lang="no">
-  <!-- Head er kun for nettleser informasjon -->
-  <head>
-    <title>Hjem</title>
-    <link rel="icon" type="image/x-icon" href="html.png" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
+<head>
+  <title>Hjem - BurgerQueen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="html.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="images/hamburger (3).png" alt="Logo" id="logo" />
+    <nav class="headerNav" id="headerNav">
+      <a href="menu.html" class="headerNavButton">Meny</a>
+      <a href="#" class="headerNavButton">Kontakt oss</a>
+      <a href="#" class="headerNavButton">Jobbe hos oss?</a>
+    </nav>
+    <div id="burger-icon">☰</div>
+  </header>
 
-  <!-- Body er kun for det som skal synes på selve nettsiden -->
-  <body>
-    <header>
-  
-      
-        
-      
-        <nav class="headerNav" id="headerNav">
- 
-          <a href="menu.html" target="_blank" class="headerNavButton">Menu</a>
-          <a href="" class="headerNavButton">Kontakt oss</a>
-          <a href="" class="headerNavButton">Jobbe hos oss?</a>
-        
-    </header>
-      
-    <main> 
-       <div class="heroText"></div>
-       <h1>BurgerQueen</h1>
-       <p>Slagord for resturant</p>
-     <img class="heroImg" src="Burger.jpg" alt="Bilde av en matrett">
-      <section class="sectionHero">
-        <!-- Hero-section: Kort introduksjon til produktet. Booking knapp -->
-     
-        
-         
-          
-          <div class="heroButtons">
-            <button>Bestill bord</button>
-            <button>Bestill levering</button>
-          </div>
+  <main>
+    <section class="sectionHero">
+      <div class="heroText">
+        <h1>BurgerQueen</h1>
+        <p>Beste burgere i byen!</p>
+        <img class="heroImg" src="images/Burger.jpg" alt="Bilde av en burger" />
+        <div class="heroButtons">
+          <a href="book.html" class="heroButtonLink">Bestill bord</a>
+          <button>Bestill levering</button>
         </div>
-      </section>
-    </main>
-    <footer>
-      <h4>Laget av Therese</h4>
-    </footer>
-  </body>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h4>Laget av Therese</h4>
+  </footer>
+  <button id="scrollToTopBtn" title="Til toppen">⬆</button>
+</body>
 </html>

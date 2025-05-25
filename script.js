@@ -1,97 +1,98 @@
-console.log('Hello!');
+console.log("Script lastet");
+
+// Vent til hele DOM-en er klar før noe kjøres
 document.addEventListener("DOMContentLoaded", () => {
-  // Logo-klikk: header
+  // Logo-klikk: legg til/fjern gul bakgrunn
   const logo = document.getElementById("logo");
-  const container = document.getElementById("easteregg");
-  if (logo && container) {
-    logo.addEventListener("click", () => {
-      container.classList.toggle("yellow-background");
-    });
-  }
-
-  // Logo-klikk: footer
   const logo2 = document.getElementById("logo2");
-  const container2 = document.getElementById("easteregg2");
-  if (logo2 && container2) {
-    logo2.addEventListener("click", () => {
-      container2.classList.toggle("yellow-background");
+
+  if (logo) {
+    logo.addEventListener("click", () => {
+      document.body.classList.toggle("yellow-background");
     });
   }
 
-  // Burger meny
-  const burgerIcon = document.getElementById("burger-icon");
-  const headerNav = document.getElementById("headerNav");
-  if (burgerIcon && headerNav) {
-    burgerIcon.addEventListener("click", () => {
-      burgerIcon.classList.toggle("active");
-      headerNav.classList.toggle("show");
+  if (logo2) {
+    logo2.addEventListener("click", () => {
+      document.body.classList.toggle("yellow-background");
+    });
+  }
+
+  // Burgerkortene på meny-siden
+  const burgerCardContainer = document.querySelector("#burgerCardContainer");
+
+  if (burgerCardContainer) {
+    const burgers = [
+      {
+        imgSrc: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=300&q=80",
+        title: "Classic Burger",
+        description: "Saftig biff, salat, tomat, ost",
+        price: "129 kr"
+      },
+      {
+        imgSrc: "./images/baconbbq.jpg",
+        title: "BBQ Bacon",
+        description: "Biff, bacon, ost, BBQ-saus",
+        price: "149 kr"
+      },
+      {
+        imgSrc: "./images/veggieburger.jpg",
+        title: "Veggie Burger",
+        description: "Vegetarbiff, avokado, tomat",
+        price: "119 kr"
+      },
+      {
+        imgSrc: "./images/trippelcheese.jpg",
+        title: "Cheese Overload",
+        description: "Trippel ost, biff, løk og salat",
+        price: "139 kr"
+      },
+      {
+        imgSrc: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=300&q=80",
+        title: "Spicy Jalapeño",
+        description: "Biff, jalapeño, ost, chipotle-mayo",
+        price: "139 kr"
+      },
+      {
+        imgSrc: "./images/dobblemeat.jpg",
+        title: "Double Trouble",
+        description: "Dobbel biff, ost, bacon, dressing",
+        price: "159 kr"
+      }
+    ];
+
+    burgers.forEach(({ imgSrc, title, description, price }) => {
+      const card = document.createElement("div");
+      card.classList.add("pizzaCard");
+
+      card.innerHTML = `
+        <img class="pizzaCardImg" src="${imgSrc}" alt="Bilde av ${title}">
+        <div class="pizzaCardContent">
+          <h3 class="pizzaCardTitle">${title}</h3>
+          <p class="pizzaCardDescription">${description}</p>
+          <p class="pizzaCardPrice">${price}</p>
+        </div>
+      `;
+
+      burgerCardContainer.appendChild(card);
     });
   }
 });
 
+// Scroll to top-knapp
+const scrollBtn = document.getElementById("scrollToTopBtn");
 
+if (scrollBtn) {
+  // Vis knapp når man scroller ned
+  window.addEventListener("scroll", () => {
+    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
 
-console.log("Working from menu?");
-
-// menu.html
-const pizzaCardContainer = document.querySelector("#pizzaCardContainer");
-
-    function createPizzaCard({ imgSrc, title, description, price }) {
-      const pizzaCard = document.createElement("div");
-      pizzaCard.classList.add("pizzaCard");
-
-      const pizzaCardImg = document.createElement("img");
-      pizzaCardImg.classList.add("pizzaCardImg");
-      pizzaCardImg.src = imgSrc || "https://via.placeholder.com/300x180?text=Pizza";
-      pizzaCardImg.alt = `Bildet av pizzaen ${title}`;
-
-      const pizzaCardContent = document.createElement("div");
-      pizzaCardContent.classList.add("pizzaCardContent");
-
-      const pizzaCardTitle = document.createElement("h3");
-      pizzaCardTitle.classList.add("pizzaCardTitle");
-      pizzaCardTitle.textContent = title;
-
-      const pizzaCardDescription = document.createElement("p");
-      pizzaCardDescription.classList.add("pizzaCardDescription");
-      pizzaCardDescription.textContent = description;
-
-      const pizzaCardPrice = document.createElement("p");
-      pizzaCardPrice.classList.add("pizzaCardPrice");
-      pizzaCardPrice.textContent = price;
-
-      pizzaCardContent.appendChild(pizzaCardTitle);
-      pizzaCardContent.appendChild(pizzaCardDescription);
-      pizzaCardContent.appendChild(pizzaCardPrice);
-
-      pizzaCard.appendChild(pizzaCardImg);
-      pizzaCard.appendChild(pizzaCardContent);
-
-      return pizzaCard;
-    }
-
-    const pizzas = [
-      {
-        imgSrc: "https://images.unsplash.com/photo-1601924638867-3f36db8d4b19?auto=format&fit=crop&w=300&q=80",
-        title: "Margherita",
-        description: "Tomatsaus, mozzarella, basilikum",
-        price: "120 kr"
-      },
-      {
-        imgSrc: "https://images.unsplash.com/photo-1548365328-66e3d49a8f0d?auto=format&fit=crop&w=300&q=80",
-        title: "Pepperoni",
-        description: "Tomatsaus, mozzarella, pepperoni",
-        price: "140 kr"
-      },
-      {
-        imgSrc: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80",
-        title: "Vegetar",
-        description: "Tomatsaus, mozzarella, grønnsaker",
-        price: "130 kr"
-      },
-    ];
-
-    pizzas.forEach(pizzaData => {
-      const card = createPizzaCard(pizzaData);
-      pizzaCardContainer.appendChild(card);
+  // Scroll til toppen når man klikker
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
+  });
+}

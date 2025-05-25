@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html lang="no">
-  <!-- Head er kun for nettleser informasjon -->
-  <head>
-    <title>Hjem</title>
-    <link rel="icon" type="image/x-icon" href="html.png" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
+<head>
+  <title>Meny - BurgerQueen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="backButton">← Tilbake til hjem</a>
+  </header>
 
-  <!-- Body er kun for det som skal synes på selve nettsiden -->
-  <body>
-    <header>
-  
-      <nav>
-        <!-- Navigasjons elementene skal være en ul-liste. Bookmark anchors -->
-        <a href="index.html">Home</a>
+  <main>
+    <section class="hero-menu">
+      <h1>Vår meny</h1>
+      <p>Vi har et stort utvalg av burgere!</p> 
+      <div id="burgerCardContainer"></div>
+    </section>
+  </main>
 
-      </nav>
-    </header>
-    <main>
-      <section class="">
-        <h1>Resturant Meny</h1>
-        <p>Vi har et stort utvalg av pizza!</p>
-        <section id="pizzaCardContainer">
-            <!-- Her fylles det med kort fra JavaScript som viser frem ulike pizzaer -->
-        </section>
-      </section>
-    </main>
-    <footer>
-      <h4>Laget av Therese</h4>
-    </footer>
-  </body>
+  <footer>
+    <h4>Laget av Therese</h4>
+  </footer>
+  <button id="scrollToTopBtn" title="Til toppen">⬆</button>
+</body>
 </html>
