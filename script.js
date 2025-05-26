@@ -1,17 +1,8 @@
 console.log("Script lastet");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // === Logo: gul bakgrunn ved klikk ===
-  const logo = document.getElementById("logo");
-  const logo2 = document.getElementById("logo2");
 
-  [logo, logo2].forEach(el => {
-    if (el) {
-      el.addEventListener("click", () => {
-        document.body.classList.toggle("yellow-background");
-      });
-    }
-  });
+ 
 
   // === MENY-siden ===
   const burgerCardContainer = document.getElementById("burgerCardContainer");
@@ -81,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
+  // === ORDER-siden ===
   const orderCardContainer = document.getElementById("orderCardContainer");
   const cartList = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
@@ -103,18 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartTotal.textContent = `${total} kr`;
 
-    // Fjern-knapp logikk
-    cartList.addEventListener("click", (e) => {
-      if (e.target.classList.contains("removeBtn")) {
-        const indexToRemove = parseInt(e.target.dataset.index);
-        const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        updatedCart.splice(indexToRemove, 1);
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-        location.reload();
-      }
-    });
 
-  
+
+    // Vis også noen ekstra burgere til bestilling
     const burgers = [
       {
         title: "Classic Burger",

@@ -3,7 +3,6 @@
   --primary-color: #1D7874;
   --secondary-color: #679289;
   --primary-hover-color: #145F58;
-  --accent-color: yellow;
   --text-color: #222;
   --subtext-color: #555;
   --background-color: #f9f9f9;
@@ -317,25 +316,7 @@ footer {
 }
 
 /*ORDER*/
-.cartSection {
-  background-color: var(--white);
-  padding: var(--spacing);
-  border-radius: var(--default-border-radius);
-  max-width: 600px;
-  margin: 40px auto;
-  text-align: center;
-}
 
-.cartSection ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.cartSection li {
-  padding: 8px;
-  border-bottom: 1px solid var(--border-color);
-}
 
 .addToCartBtn {
   background-color: var(--primary-color);
@@ -352,21 +333,7 @@ footer {
   background-color: var(--primary-hover-color);
 }
 
-.removeBtn {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 4px 8px;
-  font-size: 12px;
-  margin-left: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.removeBtn:hover {
-  background-color: darkred;
-}
 
 @media (max-width: 480px) {
   .heroText h1 {
