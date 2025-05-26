@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === ORDER-siden ===
+
   const orderCardContainer = document.getElementById("orderCardContainer");
   const cartList = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Vis også noen ekstra burgere til bestilling
+  
     const burgers = [
       {
         title: "Classic Burger",
