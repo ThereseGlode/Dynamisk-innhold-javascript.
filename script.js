@@ -1,9 +1,6 @@
 console.log("Script lastet");
 
 document.addEventListener("DOMContentLoaded", () => {
-
- 
-
   // === MENY-siden ===
   const burgerCardContainer = document.getElementById("burgerCardContainer");
 
@@ -78,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartTotal = document.getElementById("cartTotal");
 
   if (orderCardContainer && cartList && cartTotal) {
-    // Last inn handlekurven fra localStorage
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     let total = 0;
 
@@ -94,9 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartTotal.textContent = `${total} kr`;
 
-
-
-    // Vis også noen ekstra burgere til bestilling
     const burgers = [
       {
         title: "Classic Burger",

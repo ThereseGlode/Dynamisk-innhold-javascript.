@@ -20,7 +20,7 @@
   --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Reset og basis */
+/* 🌐 Reset og basis */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,8 +32,10 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  padding-bottom: 60px; /* For at scrollBtn ikke dekker innhold */
 }
 
+/* 🧭 Header og navigasjon */
 header {
   display: flex;
   justify-content: space-between;
@@ -41,6 +43,7 @@ header {
   padding: var(--spacing) 5%;
   background-color: var(--primary-color);
   margin-bottom: var(--spacing);
+  flex-wrap: wrap;
 }
 
 #logo, #logo2 {
@@ -51,6 +54,8 @@ header {
 nav.headerNav {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .headerNavButton {
@@ -68,6 +73,7 @@ nav.headerNav {
   background-color: var(--secondary-color);
 }
 
+/* 🔙 Tilbakeknapp */
 .backButton {
   display: inline-block;
   background-color: var(--white);
@@ -85,20 +91,18 @@ nav.headerNav {
   background-color: var(--secondary-color);
 }
 
-/* Hovedinnhold */
+/* 🧱 Hovedinnhold */
 main {
   background-color: var(--secondary-color);
   padding: var(--spacing) 5%;
   border-radius: var(--default-border-radius);
 }
 
-
-
+/* 🎯 Hero-seksjon */
 .sectionHero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   min-height: 100vh;
 }
@@ -107,7 +111,6 @@ main {
   font-family: var(--heading-font);
   font-size: 3rem;
   margin-bottom: 10px;
-
 }
 
 .heroText p {
@@ -123,45 +126,35 @@ main {
   margin-bottom: 30px;
 }
 
-/* Knapper */
+/* 🔘 Hero-knapper */
 .heroButtons {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
-.heroButtons button {
+.heroButtons button,
+.heroButtonLink {
   background-color: var(--primary-color);
   color: var(--white);
-  border: none;
   padding: 12px 24px;
   font-size: 16px;
+  border: none;
   border-radius: var(--button-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.heroButtons button:hover {
-  background-color: var(--primary-hover-color);
-}
-
-.heroButtonLink {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: var(--button-radius);
-  text-decoration: none;
   text-align: center;
+  text-decoration: none;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
+.heroButtons button:hover,
 .heroButtonLink:hover {
   background-color: var(--primary-hover-color);
 }
 
-/* Kort / meny */
+/* 🍔 Kort / meny */
 #burgerCardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -184,7 +177,6 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 320px;
-  margin: 0 auto;
 }
 
 .pizzaCard:hover {
@@ -229,7 +221,22 @@ main {
   margin: 0;
 }
 
-/* Scroll to top */
+.addToCartBtn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* 🔝 Scroll to top */
 #scrollToTopBtn {
   position: fixed;
   bottom: 40px;
@@ -251,18 +258,7 @@ main {
   background-color: var(--primary-hover-color);
 }
 
-/* Footer */
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--spacing);
-  background-color: var(--primary-color);
-  color: var(--white);
-  margin-top: 40px;
-}
-
-/* Bestilling / booking */
+/* 📩 Bestilling */
 .bookingSection {
   max-width: 600px;
   margin: 0 auto;
@@ -315,26 +311,7 @@ footer {
   background-color: var(--primary-hover-color);
 }
 
-/*ORDER*/
-
-
-.addToCartBtn {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  padding: 8px 12px;
-  border-radius: var(--button-radius);
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.addToCartBtn:hover {
-  background-color: var(--primary-hover-color);
-}
-
-
-
+/* 📱 RESPONSIVT DESIGN */
 @media (max-width: 480px) {
   .heroText h1 {
     font-size: 2rem;
@@ -351,13 +328,11 @@ footer {
 
   .heroButtons button,
   .heroButtonLink {
-    width: 100%;
     font-size: 1rem;
   }
 
   #burgerCardContainer {
     grid-template-columns: 1fr;
-    justify-items: center;
   }
 
   .pizzaCard {
@@ -368,16 +343,33 @@ footer {
     width: 100%;
     text-align: center;
   }
+
   .headerNav {
-    display: flex;
-    gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
-  } 
+    gap: 10px;
+  }
+
   .headerNavButton {
     padding: 10px;
     font-size: 14px;
   }
+
+  #scrollToTopBtn {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 14px;
+    font-size: 18px;
+  }
 }
 
+/* 🦶 Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing);
+  background-color: var(--primary-color);
+  color: var(--white);
+  margin-top: 40px;
+}
